@@ -5,6 +5,9 @@
 
 # knockout套件
 
+* [knockout-bootstrap](https://github.com/billpull/knockout-bootstrap)
+* [knockout-classBindingProvider](https://github.com/rniemeyer/knockout-classBindingProvider)
+
 ### router
 
 
@@ -19,6 +22,8 @@
 # 線上課程 Courses
 
 # 幫助 Help
+
+* [jQuery使用JSONP時的錯誤處理](http://www.cnblogs.com/antineutrino/p/jQuery-getJSON-handle-errors.html)
 
 # 一般主題 General Topics
 
