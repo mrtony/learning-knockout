@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout computed example</title>
+  <link href="../styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="header" data-bind="with: metadata">
+        <h1 data-bind="text: pageTitle">
+        </h1>
+        <div data-bind="with:personal">
+            <a href="00-index.html">Index</a> <a data-bind="attr: {href: link, title: text}, text: text"
+                class="personalCss"></a>
+        </div>
+    </div>
+    <!--1. 顯示list的筆數-->
+    <div>
+        <span data-bind="text:products().length"></span><span>Products</span>
+    </div>
+    <!--2. 建立multiple select list-->
+    <div >
+        <select class="productsSelect" multiple="multiple" 
+            data-bind="options:products, selectedOptions:selectedProducts, optionsText:'description'">
+        </select>
+    </div>
+    <div>
+      <button data-bind="click: removeSelected, enable: productsAreSelected">Remove</button>
+      <button data-bind="click: sortProducts, enable: productsExist">Sort</button>
+    </div>
+
+    <form data-bind="submit: addItem">
+        Add item:
+        <input type="text" data-bind="value:itemToAdd, valueUpdate:'afterkeydown'" />
+        <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+    </form>
+    <div class="topics">
+        <span>Explores:</span>
+        <ul>
+            <li>observableArray</li>
+            <li>observable</li>
+            <li>computed</li>
+            <li>click</li>
+            <li>object notation (products().length)</li>
+            <li>attr</li>
+            <li>with</li>
+        </ul>
+    </div>
+<script src="../../bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="../../bower_components/lodash/lodash.min.js"></script>
+<script src="../../bower_components/knockout/dist/knockout.debug.js"></script>
+<script src="../../common/data.js"></script>
+<script src="script_2-07.js"></script>
+</body>
+</html>

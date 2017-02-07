@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout computed example</title>
+  <link href="../styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="header" data-bind="with: metadata">
+        <h1 data-bind="text: pageTitle">
+        </h1>
+        <div data-bind="with:personal">
+            <a href="00-index.html">Index</a> <a data-bind="attr: {href: link, title: text}, text: text"
+                class="personalCss"></a>
+        </div>
+    </div>
+    
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Ext. Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: lines'>
+                <tr>
+                    <td style="width: 25px;">
+                        <select data-bind="options:$parent.products, value:product, optionsText: 'shortDescription', optionsCaption:'Select a product ...'">
+                        </select>
+                    </td>
+                    <td data-bind="if: product" style="width: 100px;">
+                        <span data-bind='text: my.formatCurrency(product().salePrice())'></span>
+                    </td>
+                    <td style="width: 100px;">
+                        <input data-bind='visible: product, value: quantity, valueUpdate: "afterkeydown"' class="integerInput"/>
+                    </td>
+                    <td style="width: 100px;">
+                        <span data-bind='visible: product, text: my.formatCurrency(extendedPrice())'></span>
+                    </td>
+                    <td style="width: 100px;">
+                        <a href='#' data-bind='click: $parent.removeLine'>Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Total value: <span data-bind='text: my.formatCurrency(grandTotal())'></span>
+        </p>
+        <button data-bind='click: addLine'>Add product</button>
+    </div>
+
+    <div class="topics">
+        <span>Explores:</span>
+        <ul>
+            <li>observable</li>
+            <li>computed (for the photo Url)</li>
+            <li>computed (for the extended price)</li>
+            <li>click</li>
+            <li>attr</li>
+            <li>text</li>
+            <li>value</li>
+			<li>valueUpdate: 'afterkeydown'</li>
+        </ul>
+    </div>
+<script src="../../bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="../../bower_components/knockout/dist/knockout.debug.js"></script>
+<script src="../../common/data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

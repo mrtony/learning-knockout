@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout Hello world</title>
+  <style>
+    .negative {
+      color: red;
+    }
+    .positive {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2>With knockout</h2>
+  <span data-bind="style: {color: isError? 'red' : 'green'}">Item Number</span><span data-bind="text: itemNumber"></span>
+  <span data-bind="css: isError? 'negative' : 'positive'">Guitar number</span><input data-bind="value: model">
+  <span>Sales price</span><input data-bind="value: salePrice">
+  <div data-bind="with: profile">
+    <a data-bind="attr: {href: link, title: text}, text: text"></a>
+  </div>
+<script src="../..//bower_components/knockout/dist/knockout.js"></script>
+<script src="attr_css_style.js"></script>
+</body>
+</html>

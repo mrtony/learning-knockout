@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout computed example</title>
+  <link href="../styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="header" data-bind="with: metadata">
+        <h1 data-bind="text: pageTitle">
+        </h1>
+        <div data-bind="with:personal">
+            <a href="00-index.html">Index</a> <a data-bind="attr: {href: link, title: text}, text: text"
+                class="personalCss"></a>
+        </div>
+    </div>
+    
+    <div>
+        <div>
+            <img data-bind="attr: {src: product().photoUrl, title:product().shortDescription}" class="photoThumbnail"/>
+        </div>
+        <div>
+            <span class="caption">Product:</span><span data-bind="text:product().shortDescription"></span>
+        </div>
+        <div>
+            <span class="caption">Unit Price:</span>
+            <input data-bind="value: product().salePrice, valueUpdate:'afterkeydown'"  class="currencyInput"/>
+        </div>
+        <div>
+            <span class="caption">Quantity:</span>
+            <input data-bind="value: quantity, valueUpdate: 'afterkeydown'" class="integerInput"/>
+        </div>
+        <div>
+            <span class="caption">Ext. price:</span>
+            <input data-bind="value: extendedPrice, valueUpdate:'afterkeydown'">
+        </div>
+
+    </div>
+
+    <div class="topics">
+        <span>Explores:</span>
+        <ul>
+            <li>observable</li>
+            <li>computed (for the photo Url)</li>
+            <li>computed (for the extended price)</li>
+            <li>click</li>
+            <li>attr</li>
+            <li>text</li>
+            <li>value</li>
+			<li>valueUpdate: 'afterkeydown'</li>
+        </ul>
+    </div>
+<script src="../../bower_components/knockout/dist/knockout.js"></script>
+<script src="../../common/data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

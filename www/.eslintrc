@@ -1,0 +1,24 @@
+{
+  "extends": "../.eslintrc",
+  "env": {
+    "node": false,
+    "browser": true
+  },
+  "globals": {
+    "angular": true,
+    "ionic": true,
+    "PouchDB": true,
+    "forge": true,
+    "_": true,
+    "cordova": true,
+    "device": true,
+    "StatusBar": true,
+    "Camera": true,
+    "Uint8Array": true,
+    "startApp": true,
+    "FingerprintAuth": true
+  },
+  "rules": {
+    "no-console": 1
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout Hello world</title>
+</head>
+<body>
+  <div data-bind="event: {mouseover: showAbout, mouseout: hideAbout}">Mouse over to view the information about John</div>
+  <div>
+    John's age is <span data-bind="text: age"></span>
+    <form data-bind="submit: growOld">
+      <button type="submit">Grow Old</button>
+      <input type="checkbox" data-bind="checked: isMarried">
+      <select multiple="multiple", data-bind="options: children, selectedOptions: selectedChildren"></select>
+    </form>
+  </div>
+  <div data-bind="visible: aboutEnable">
+    John's favorite site is <a href="google.com.tw">Google</a>
+  </div>
+  <table>
+    <thead>
+      <tr><th>selected</th><th><input type="checkbox" data-bind="checked: $root.isMarried">全選</th><th>FirstName</th><th>Age</th><th>action</th></tr>
+    </thead>
+    <tbody data-bind="foreach: sons">
+      <tr>
+        <td><input type="checkbox" data-bind="checked: selected"></td>
+        <td><span data-bind="text: firstName, style: {color: $parent.selectedSon() && $parent.selectedSon().firstName() === $data.firstName()? 'red' : 'green'}"></span></td>
+        <td data-bind="text: age"></td>
+        <td><a href='#' data-bind='click: $parent.removeSon'>Remove</a></td>        
+      </tr>
+    </tbody>
+  </table>
+  <select data-bind="options:sons, value: selectedSon, optionsText: 'firstName', optionsCaption:'Select a son ...'">
+  </select>
+  <div data-bind="if: selectedSon">
+    <span data-bind="text: selectedSon().firstName"></span>
+  </div>
+  <div data-bind="if: selectedSon2">
+    <span data-bind="text: selectedSon2().firstName()"></span>
+  </div>
+<script src="../..//bower_components/jQuery/dist/jquery.min.js"></script>  
+<script src="../..//bower_components/knockout/dist/knockout.js"></script>
+<script src="practice.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../styles.css" rel="stylesheet" type="text/css" />
+  <title>Knockout Hello world</title>
+</head>
+<body>
+  <h2>With knockout</h2>
+  <span>Item Number</span><span data-bind="text: itemNumber"></span>
+  <span>Guitar number</span><input data-bind="value: model">
+  <span>Sales price</span><input data-bind="value: salePrice">
+  <span data-bind="text: salePrice"></span>
+  <span data-bind="text: manufacture().company"></span>
+  <span data-bind="text: memo().date()"></span>
+  <span data-bind="text: price.cost"></span>
+<script src="../..//bower_components/knockout/dist/knockout.js"></script>
+<script src="binding.js"></script>
+</body>
+</html>
