@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout Customer Binding - checkbox demo</title>
+  <link href="../../bower_components/iCheck/skins/all.css" rel="stylesheet">
+</head>
+<body>
+  <h2>Knockout Customer Binding - checkbox demo</h2>
+  <input type="checkbox" data-bind="icheck : displayDetail(), checked:displayDetail"/> Display Detail options
+  <div data-bind="if: displayDetail">
+    <span>This is detail info.</span>
+  </div>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/knockout/dist/knockout.Debug.js"></script>
+<script src="../../bower_components/iCheck/icheck.min.js"></script>
+<script src="kobindings.js"></script>
+<script src="iCheckDemo.js"></script>
+</body>
+</html>
