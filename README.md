@@ -14,6 +14,11 @@
 ### 可搭配的jQuery套件
 
 * [iCheck](http://www.bootcss.com/p/icheck/)
+* [listgroup.js-可選擇的bootstrap list group](http://rickardn.github.io/listgroup.js/)
+
+#### menu
+
+* [superfish](https://github.com/joeldbirch/superfish)
 
 # 書籍 Books
 
@@ -34,4 +39,5 @@
 # 分段式文章 Multipart Articles
 
 # 範例應用程式 Sample Apps
+* [startbootstrap-sb-admin](https://github.com/BlackrockDigital/startbootstrap-sb-admin)
 
