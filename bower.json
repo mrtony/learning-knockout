@@ -12,6 +12,9 @@
     "install": "^1.0.4",
     "lodash": "3.3.1",
     "requirejs": "^2.3.2",
-    "iCheck": "icheck#^1.0.2"
+    "iCheck": "icheck#^1.0.2",
+    "sammy": "^0.7.6",
+    "knockout-amd-helpers": "^1.0.0",
+    "text": "^2.0.15"
   }
 }

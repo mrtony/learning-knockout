@@ -31,6 +31,8 @@
 * [jQuery使用JSONP時的錯誤處理](http://www.cnblogs.com/antineutrino/p/jQuery-getJSON-handle-errors.html)
 
 # 一般主題 General Topics
+* [Building single page apps with html5, asp.net web api, knockout and jquery by JohnPapa.net and Pluralsight](https://ict.ken.be/building-a-spa-with-html5-web-api-knockout-and-jquery-notes)
+* [DEVELOPING LARGE SCALE KNOCKOUTJS APPLICATIONS](http://blog.scottlogic.com/2014/02/28/developing-large-scale-knockoutjs-applications.html)
 
 # 介紹/開始學習 knockoutjs
 
@@ -42,4 +44,9 @@
 * [startbootstrap-sb-admin](https://github.com/BlackrockDigital/startbootstrap-sb-admin)
 * [Cart editor example-官方提供的cart CRUD範例](http://knockoutjs.com/examples/cartEditor.html): 有類似選縣市鄉鎮的選單
 * [knockout webmail SPA-使用sammyjs(要用0.76版才可在IE8使用)](https://github.com/jchannon/KnockoutWebMail)
+* [SpaDemo-使用director當router的簡單spa](https://github.com/jesselew/SpaDemo)
+
+### sammy
+* [demo1](http://jsfiddle.net/jarajesh/rjABJ/6/)
+* [demo2](https://github.com/TodorVyagov/JavaScript-Applications/blob/master/9.SPA-Applications/CrowdChat/scripts/app.js)
 
