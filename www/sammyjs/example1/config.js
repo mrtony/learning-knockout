@@ -4,6 +4,7 @@ define('config',
       var pages = ['home', 'about', 'product'];
 
       var configureExternalTemplates = function configureExternalTemplates() {
+        ko.amdTemplateEngine.defaultPath = '../templates';
         ko.amdTemplateEngine.defaultSuffix = ".tmpl.html";
         ko.amdTemplateEngine.defaultRequireTextPluginName = "text";
       };

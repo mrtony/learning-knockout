@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout Module Design</title>
+</head>
+<body>
+  <div id="view" class="view">
+    <nav>
+      <div id="main-nav">
+      <!-- ko foreach: pages -->
+          <a  data-bind="text:$data, attr:{href:'#' + $data}"></a>
+      <!-- /ko -->
+      </div>
+    </nav>
+    <!--<span data-bind="text: viewName"></span>-->
+    <div data-bind="template:{name: viewName()}"></div>
+
+  </div>
+
+<script src="../../bower_components/jQuery/dist/jquery.min.js"></script>  
+<script src="../../bower_components/sammy/lib/min/sammy-0.7.6.min.js"></script>
+<script src="../../bower_components/knockout/dist/knockout.js"></script>
+<script src="../../bower_components/requirejs/require.js"></script>
+<script src="config.js"></script>
+<script src="../vm.home.js"></script>
+<script src="app.js"></script>
+<script src="../model.product.js"></script>
+<script src="../model.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

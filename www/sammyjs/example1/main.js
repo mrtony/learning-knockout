@@ -16,8 +16,8 @@
         require.config({
             paths: {
                 //lib
-                'knockout-amd-helpers': '../bower_components/knockout-amd-helpers/build/knockout-amd-helpers',
-                text: '../bower_components/text/text',
+                'knockout-amd-helpers': '../../bower_components/knockout-amd-helpers/build/knockout-amd-helpers',
+                text: '../../bower_components/text/text',
             }
         });
         // Plugins must be loaded after jQuery and Knockout, 

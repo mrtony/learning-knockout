@@ -29,7 +29,8 @@ define('app',
       var activate = function () {
         //Note: Data bind the values between the source and the targets using Knockout
         configureRoutes();
-        ko.applyBindings(vm, document.getElementById('main-nav'));
+        // ko.applyBindings(vm, document.getElementById('main-nav'));
+        ko.applyBindings(vm, document.getElementById('view'));
       };
 
       return {
