@@ -6,7 +6,7 @@
   "homepage": "",
   "dependencies": {
     "jQuery": "1.12.0",
-    "q": "^1.4.1",
+    "q": "1.4.1",
     "knockout": "^3.4.1",
     "bower": "*",
     "install": "^1.0.4",
