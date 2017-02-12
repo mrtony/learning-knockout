@@ -15,7 +15,7 @@
       </div>
     </nav>
     <!--<span data-bind="text: viewName"></span>-->
-    <div data-bind="template:{name: viewName()}"></div>
+    <div data-bind="template:{name: appView().viewName, data: appView().model}"></div>
 
   </div>
 
@@ -24,7 +24,7 @@
 <script src="../../bower_components/knockout/dist/knockout.js"></script>
 <script src="../../bower_components/requirejs/require.js"></script>
 <script src="config.js"></script>
-<script src="../vm.home.js"></script>
+<script src="../viewModels.js"></script>
 <script src="app.js"></script>
 <script src="../model.product.js"></script>
 <script src="../model.js"></script>

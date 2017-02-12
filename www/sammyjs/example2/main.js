@@ -17,7 +17,9 @@
             paths: {
                 //lib
                 'knockout-amd-helpers': '../../bower_components/knockout-amd-helpers/build/knockout-amd-helpers',
-                text: '../../bower_components/text/text'
+                text: '../../bower_components/text/text',
+                'vm.home': '../vm.home',
+                'vm.about': '../vm.about'
             }
         });
         // Plugins must be loaded after jQuery and Knockout, 

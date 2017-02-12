@@ -1,7 +1,7 @@
 define('config',
     ['jquery', 'knockout'],
     function ($, ko) {
-      var pages = ['home', 'about', 'product'];
+      var pages = ['home', 'about'];
 
       var configureExternalTemplates = function configureExternalTemplates() {
         ko.amdTemplateEngine.defaultPath = '../templates';

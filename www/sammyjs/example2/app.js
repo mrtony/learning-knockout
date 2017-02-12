@@ -1,22 +1,24 @@
 define('app',
-    ['knockout', 'sammy', 'config', 'vm.home'],
-    function (ko, sammy, config, vmHome) {
+    ['knockout', 'sammy', 'config', 'viewModels'],
+    function (ko, sammy, config, viewModels) {
       var initialized = false;
 
       var vm = (function() {
-        var viewName = ko.observable('');
         var pages = ko.observableArray(config.pages);
+        var appView = ko.observable();
 
         return {
           pages: pages,
-          viewName: viewName
+          appView: appView
         }
       })();
 
       var configureRoutes = function configureRoutes() {
         var app = sammy(function () {
                 this.get('#:view', function () {
-                    vm.viewName(this.params.view);
+                    var targetView = viewModels[this.params.view];
+                    vm.appView(targetView);
+                    targetView.activate();  //初始化model的內容
                 });
             });
           if (!initialized) {
