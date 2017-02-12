@@ -2,7 +2,7 @@ define('vm.about',
     ['jquery', 'knockout'],
     function ($, ko) {
       return vm = (function() {
-        var viewName = 'about';
+        var viewName = ko.observable('about');
         var model = {
           title : ko.observable('About Page'),
           list : ko.observableArray([])

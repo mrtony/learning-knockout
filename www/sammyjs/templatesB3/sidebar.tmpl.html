@@ -1,6 +1,6 @@
 <ul class="nav nav-pills nav-stacked">
   <!-- ko foreach: pages -->
-  <li data-bind="css: { active: $root.appView().viewName === $data.name }">
+  <li data-bind="css: { active: $root.appView().viewName() === $data.name }">
     <a  data-bind="text:$data.text, attr:{href:'#' + $data.name}"></a>
   </li>
   <!-- /ko -->

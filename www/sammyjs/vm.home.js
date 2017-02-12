@@ -3,7 +3,7 @@ define('vm.home',
     function (ko, model) {
       return vm = (function() {
         //var product = new model.Product().id(1).name('Footer').price(100).stock(20);
-        var viewName = 'home';
+        var viewName =ko.observable('home');
         var model = {
           title : ko.observable('Home Page')
         };
