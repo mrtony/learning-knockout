@@ -22,7 +22,6 @@ define('app',
       var configureRoutes = function configureRoutes() {
         var app = sammy(function () {
                 this.get('#:view', function () {
-                  debugger;
                     vm.appView().viewName(this.params.view);
                 });
             });

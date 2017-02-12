@@ -10,9 +10,9 @@ define(['knockout', 'text!./home.html'], function(ko, htmlString) {
         };
 
         return {
-          title, title,
+          title: title,
           activate: activate
-        }
+        };
       };
       
       //note: 用revealing module pattern時, 要使用instance

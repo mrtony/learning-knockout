@@ -18,7 +18,8 @@
                 //lib
                 'knockout-amd-helpers': '../../bower_components/knockout-amd-helpers/build/knockout-amd-helpers',
                 text: '../../bower_components/text/text',
-                'activity-indicator': '../../libs/jquery.activity-indicator'
+                'activity-indicator': '../../libs/jquery.activity-indicator',
+                'Q': '../../bower_components/q/q'
             }
         });
         // Plugins must be loaded after jQuery and Knockout, 
