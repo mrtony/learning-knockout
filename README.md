@@ -39,6 +39,7 @@
 # 使用及學習心得 Lessons Learned
 
 # 分段式文章 Multipart Articles
+- [AngularJS vs Knockout – Introduction (1~9)](http://blogs.lessthandot.com/index.php/webdev/uidevelopment/angularjs-vs-knockout-introduction-1/)
 
 # 範例應用程式 Sample Apps
 * [startbootstrap-sb-admin](https://github.com/BlackrockDigital/startbootstrap-sb-admin)
