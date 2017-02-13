@@ -16,6 +16,10 @@
 * [iCheck](http://www.bootcss.com/p/icheck/)
 * [listgroup.js-可選擇的bootstrap list group](http://rickardn.github.io/listgroup.js/)
 
+##### 表單驗證
+* [前端工具 - 15個最佳的 JavaScript 表單驗證庫](http://www.hksilicon.com/articles/1257775)
+* [jQuery.formError](http://www.hksilicon.com/articles/1225625)
+
 #### menu
 
 * [superfish](https://github.com/joeldbirch/superfish)
