@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Knockout Module Design</title>
+  <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="container">
+  <h2>Product</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
+        <th>stock</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: products">
+      <tr>
+        <td data-bind="text:Id"></td>
+        <td data-bind="text:Name"></td>
+        <td data-bind="text:Price"></td>
+        <td data-bind="text:Stock"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script src="../../bower_components/jQuery/dist/jquery.min.js"></script>  
+<script src="../../bower_components/knockout/dist/knockout.js"></script>
+<script src="../../bower_components/requirejs/require.js"></script>
+<script src="app.js"></script>
+<script src="model.product.js"></script>
+<script src="model.js"></script>
+<script src="dataContext.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

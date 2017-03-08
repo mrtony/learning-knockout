@@ -16,7 +16,10 @@
     "Camera": true,
     "Uint8Array": true,
     "startApp": true,
-    "FingerprintAuth": true
+    "FingerprintAuth": true,
+    "define": true,
+    "requirejs": true,
+    "require": true
   },
   "rules": {
     "no-console": 1

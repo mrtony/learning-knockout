@@ -1,0 +1,6 @@
+{
+  "Product": [
+    {"Id": 1, "Name": "Radio", "Price": 100, "Stock": 10},
+    {"Id": 2, "Name": "TV", "Price": 2000, "Stock": 20}
+  ]
+}
