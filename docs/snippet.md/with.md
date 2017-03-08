@@ -28,3 +28,9 @@ html
     </div>
 </div>
 ```
+
+comment syntax
+```
+<!-- ko with: selectedPerson -->
+<!-- /ko -->
+```

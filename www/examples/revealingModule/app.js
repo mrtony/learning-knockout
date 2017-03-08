@@ -5,9 +5,11 @@ define('app',
   function ($, ko, model, db) {
     var vm = (function() {
       var products = ko.observableArray([]);
+      var message = ko.observable('');
 
       return {
-        products: products
+        products: products,
+        message: message
       };
     })();
 

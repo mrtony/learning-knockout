@@ -1,6 +1,27 @@
 form
 ===
 
+# snippets
+```
+<div class="form-group">
+  <label for="usr">Name:</label>
+  <input type="text" class="form-control" id="usr" data-bind="textInput: message">
+</div>
+<div class="well">
+  <h1 data-bind="text:message"></h1>
+</div>
+```
+
+```
+<div class="form-group">
+  <label for="usr">Name:</label>
+  <input type="text" class="form-control" id="usr" data-bind="value: message">
+</div>
+<div class="well">
+  <h1 data-bind="text:message"></h1>
+</div>
+```
+
 # select option list
 顯示一個可選擇單一項目的list.
 
