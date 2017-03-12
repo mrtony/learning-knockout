@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ </head>
+<body>
+<span data-bind="text: message"></span>
+<button data-bind="click: addExclamationMark">Add exclamation
+mark</button>
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript'>
+var viewModel = {
+  message: ko.observable(''),
+  addExclamationMark : function() {
+    this.message(this.message() + "!")
+  }
+};
+viewModel.message.subscribe(function(newValue) {
+    alert("New message is " + newValue);
+});
+viewModel.message("Hello world!");
+
+ko.applyBindings(viewModel);
+
+</script>
+</body>
+</html>
