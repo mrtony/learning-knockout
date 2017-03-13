@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ </head>
+<body>
+    <div>
+The library <span data-bind="text: LibraryName"> contains</span>
+<span data-bind="text: AmountOfBooks"></span> books.
+    </div>
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type='text/javascript'>
+var getModelFromServer = function() {
+  return {
+    LibraryName: "My home library",
+    AmountOfBooks: "5"
+  };
+};
+
+var getModelFromServer2 = function() {
+  return {
+    LibraryName: "your home library",
+    AmountOfBooks: "6"
+  };
+};
+
+var libraryModel = getModelFromServer();
+var libraryModel2 = getModelFromServer2();
+
+//1. 利用ko.mapping.fromJS直接建立view model
+var libraryViewModel = ko.mapping.fromJS(libraryModel);
+console.log('create. show ko to JS object', ko.mapping.toJS(libraryViewModel));
+
+//2. 也可以用2個參數的方式，更新view model
+ko.mapping.fromJS(libraryModel2, libraryViewModel);
+console.log('update show ko to JS object', ko.mapping.toJS(libraryViewModel))
+
+ko.applyBindings(libraryViewModel);
+</script>
+</body>
+</html>
