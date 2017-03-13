@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ </head>
+<body>
+<ul>
+  <!-- ko foreach: books -->
+  <li>
+    <p data-bind="text: $data.Id"></p>
+    <p data-bind="text: $data.Title"></p>
+  </li>
+  <!-- /ko -->
+
+</ul>
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type='text/javascript'>
+/**
+ * 用來做update, 如沒有這樣做，會導致array被remove後再加入新的資料
+*/
+var libraryModel = {
+  books: [
+   { Id : 1, Title : "Oliver Twist" }
+  ]
+};
+
+var getModelFromServer = function() {
+  return {
+    books: [
+     { Id : 1, Title : "Oliver Twist2; or, The Parish Boy's Progress"}
+    ]
+  };
+};
+
+var mappingOptions = {
+  'books': {
+    key: function(model) {
+      return ko.utils.unwrapObservable(model.Id);
+    }
+  }
+};
+
+var libraryViewModel = ko.mapping.fromJS(libraryModel, mappingOptions);
+libraryViewModel = ko.mapping.fromJS(getModelFromServer(), mappingOptions);
+ko.applyBindings(libraryViewModel);
+libraryViewModel = ko.mapping.fromJS(getModelFromServer(), mappingOptions);
+
+</script>
+</body>
+</html>
