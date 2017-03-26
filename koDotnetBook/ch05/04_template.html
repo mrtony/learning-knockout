@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+ <style>
+/*
+$screen-xs:     480px !default; // Extra small screen / phone
+$screen-sm:     768px !default; // Small screen / tablet
+$screen-md:     992px !default; // Medium screen / desktop
+$screen-lg:     1200px !default; // Large screen / wide desktop
+*/
+
+/*
+//------------------------------------------------------------------------------
+// Extra Small Screens (< 480px)
+// Most Smartphones (iPhone 4, 5, 6, 6 Plus, Nexus, Galaxy, etc)
+//------------------------------------------------------------------------------
+*/
+@media (max-width: 479px) {
+   .h3 {
+       font-size: 18px;
+   }
+}
+
+/*
+//------------------------------------------------------------------------------
+// Small Screens (768ox - 991px)
+// Ipads / Tablets
+//------------------------------------------------------------------------------
+*/
+@media (min-width: 768px) and (max-width: 991px) {
+   .h3 {
+       font-size: 20px;
+   }
+}
+
+/*
+//------------------------------------------------------------------------------
+// Medium Screens (992px - 1199px)
+//------------------------------------------------------------------------------
+*/
+@media (min-width: 992px) and (max-width: 1199px) {
+   .h3 {
+       font-size: 24px;
+   }
+}
+
+/*
+//------------------------------------------------------------------------------
+// Large screens (>= 1200px)
+//------------------------------------------------------------------------------
+*/
+@media (min-width: 1200px){
+
+}
+ </style>
+ </head>
+<body>
+
+<div data-bind="template: { name: 'book-template', data: book1}"></div>
+<div data-bind="template: { name: 'book-template', data: book2}"></div>
+<div data-bind="template: { name: 'book-template', data: book2}"></div>
+
+<hr />
+<div class="h3">template by foreach</div>
+<!-- ko foreach: books -->
+<div data-bind="template: { name: 'book-template', data: $data}"></div>
+<!-- /ko -->
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type="text/html" id="book-template">
+    <h3 data-bind="text: title"></h3>
+    <p>Author: <span data-bind="text: author"></span></p>
+    <p>Year: <span data-bind="text: year"></span></p>
+</script>
+
+<script type='text/javascript'>
+/*
+1. foreach
+2. if, ifnot
+*/
+
+var vm = {
+    book1 : { title: 'Oliver Twist', author: 'CharlesDickens', year: 1837 },
+    book2: { title: 'Winnie-the-Pooh', author: 'A. A.Milne', year: 1926 },
+    book3: { title: 'The Hobbit', author: 'J. R. R.Tolkien', year: 1937 },
+    books: [
+        { title: 'Oliver Twist', author: 'CharlesDickens', year: 1837 },
+        { title: 'Winnie-the-Pooh', author: 'A. A.Milne', year: 1926 },
+        { title: 'The Hobbit', author: 'J. R. R.Tolkien', year: 1937 }
+    ]
+
+}
+
+ko.applyBindings(vm);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+ <style>
+/*
+$screen-xs:     480px !default; // Extra small screen / phone
+$screen-sm:     768px !default; // Small screen / tablet
+$screen-md:     992px !default; // Medium screen / desktop
+$screen-lg:     1200px !default; // Large screen / wide desktop
+*/
+
+/*
+//------------------------------------------------------------------------------
+// Extra Small Screens (< 480px)
+// Most Smartphones (iPhone 4, 5, 6, 6 Plus, Nexus, Galaxy, etc)
+//------------------------------------------------------------------------------
+*/
+@media (max-width: 479px) {
+   .h3 {
+       font-size: 18px;
+   }
+}
+
+/*
+//------------------------------------------------------------------------------
+// Small Screens (768ox - 991px)
+// Ipads / Tablets
+//------------------------------------------------------------------------------
+*/
+@media (min-width: 768px) and (max-width: 991px) {
+   .h3 {
+       font-size: 20px;
+   }
+}
+
+/*
+//------------------------------------------------------------------------------
+// Medium Screens (992px - 1199px)
+//------------------------------------------------------------------------------
+*/
+@media (min-width: 992px) and (max-width: 1199px) {
+   .h3 {
+       font-size: 24px;
+   }
+}
+
+/*
+//------------------------------------------------------------------------------
+// Large screens (>= 1200px)
+//------------------------------------------------------------------------------
+*/
+@media (min-width: 1200px){
+
+}
+ </style>
+ </head>
+<body>
+<!-- ko foreach: terms -->
+<div data-bind="template: { name: 'book-template', data: $data}"></div>
+<!-- /ko -->
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type="text/html" id="book-template">
+    <form>
+        <div class="checkbox">
+            <label>
+            <input type="checkbox" data-bind="checked: selected, enable: isSelected() == false"> Check me out
+            </label>
+        </div>
+        <p data-bind="html: content, css: { 'text-muted': isSelected() == true}"></p>
+    </form>
+</script>
+
+<script type='text/javascript'>
+/*
+1. foreach
+2. if, ifnot
+*/
+
+
+$(document).ready(function() {
+    var term = function(content) {
+        var self = this;
+        self.selected = ko.observable(false);
+        self.content = ko.observable(content);
+        self.isSelected = ko.computed(function() {
+            return self.selected();
+        });
+    }
+
+    var term1 = new term('<div class="h4">content1</div>');
+    var term2 = new term('<div class="h4">content2</div>');
+
+    var vm = {
+        terms : ko.observableArray([term1, term2])
+
+    }
+
+    ko.applyBindings(vm);
+});
+
+
+
+
+
+</script>
+</body>
+</html>

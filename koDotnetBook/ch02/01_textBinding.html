@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+ </head>
+<body>
+
+The first name is <span data-bind="text: firstName"></span>
+
+<div data-bind="css: { 'text-danger': favoriteColor() == 'red',
+'text-success': favoriteColor() == 'green' }">
+John's favorite color is <span data-bind="text:
+favoriteColor"></span>.
+</div>
+
+<span data-bind="html: about"></span>
+<hr />
+<button class="btn btn-primary" data-bind="event: {click: clickHandler}">event binding</button>
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type='text/javascript'>
+/*
+1. text binding
+2. css
+3. event
+*/
+var person = {
+    firstName: "John",
+    favoriteColor: "green"
+};
+
+var PersonViewModel = function() {
+    var self = this;
+    self.favoriteColor = ko.observable(person.favoriteColor);
+    self.about = "John's favorite site is <a href='http://www.packtpub.com'>PacktPub</a>.";
+    self.firstName = ko.observable(person.firstName);
+};
+
+var vm = {
+    isMarried: person.isMarried,
+    favoriteColor: ko.observable(person.favoriteColor),
+    about: "John's favorite site is <a href='http://www.packtpub.com'>PacktPub</a>.",
+    firstName : ko.observable(person.firstName),
+    clickHandler: function(a, event) {
+        event.stopPropagation()
+        toastr.success('button click!');
+    }
+}
+
+ko.applyBindings(vm);
+
+</script>
+</body>
+</html>

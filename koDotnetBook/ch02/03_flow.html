@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+ </head>
+<body>
+<form>
+    <input type="checkbox" data-bind="checked: showAbout" />
+    Show about
+</form>
+
+<!-- ko if: showAbout-->
+John's favorite site is <a href='http://www.packtpub.com'>PacktPub</a>
+<!-- /ko -->
+
+<!-- ko ifnot: !showAbout-->
+John's favorite site is <a href='http://www.packtpub.com'>PacktPub</a>
+<!-- /ko -->
+
+<table>
+    <thead>
+        <tr><th>First name</th><th>Age</th></tr>
+    </thead>
+    <tbody>
+    <!-- ko foreach: children -->
+    <tr>
+        <td data-bind="text: firstName"></td>
+        <td data-bind="text: age"></td>
+    </tr>
+    <!-- /ko -->
+    </tbody>
+</table>
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type='text/javascript'>
+/*
+1. foreach
+2. if, ifnot
+*/
+var person = {
+    children: [
+        { firstName: "Jonnie", age: 3 },
+        { firstName: "Jane", age: 5 },
+        { firstName: "Richard", age: 7},
+        { firstName: "Mary", age: 9}
+    ]
+};
+
+var vm = {
+    children: person.children,
+    aboutEnabled : ko.observable(false),
+    showAbout : true
+}
+
+ko.applyBindings(vm);
+
+</script>
+</body>
+</html>
