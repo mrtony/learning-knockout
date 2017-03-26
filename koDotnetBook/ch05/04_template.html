@@ -60,15 +60,45 @@ $screen-lg:     1200px !default; // Large screen / wide desktop
  </head>
 <body>
 
-<div data-bind="template: { name: 'book-template', data: book1}"></div>
-<div data-bind="template: { name: 'book-template', data: book2}"></div>
-<div data-bind="template: { name: 'book-template', data: book2}"></div>
+<div class="panel panel-default" style="margin: 10px;">
+  <div class="panel-heading">一般template的使用</div>
+  <div class="panel-body">
+    <div data-bind="template: { name: 'book-template', data: book1}"></div>
+    <div data-bind="template: { name: 'book-template', data: book2}"></div>
+    <div data-bind="template: { name: 'book-template', data: book2}"></div>
+  </div>
+</div>
+
 
 <hr />
-<div class="h3">template by foreach</div>
-<!-- ko foreach: books -->
-<div data-bind="template: { name: 'book-template', data: $data}"></div>
-<!-- /ko -->
+<div class="panel panel-default" style="margin: 10px;">
+  <div class="panel-heading">以foreach來做template</div>
+  <div class="panel-body">
+    <!-- ko foreach: books -->
+    <div data-bind="template: { name: 'book-template', data: $data}"></div>
+    <!-- /ko -->
+  </div>
+</div>
+
+
+<hr />
+<div class="panel panel-default" style="margin: 10px;">
+  <div class="panel-heading">使用template本身的foreach</div>
+  <div class="panel-body">
+    <div data-bind="template: { name: 'book-template',
+                                    foreach: books,
+                                    as: 'mybook' }"></div>
+  </div>
+</div>
+
+<hr />
+<div class="panel panel-default" style="margin: 10px;">
+  <div class="panel-heading">使用template本身的foreach和as的使用</div>
+  <div class="panel-body">
+    <ul data-bind="template: { name: 'seasonTemplate', foreach: seasons, as: 'season' }"></ul>
+  </div>
+</div>
+
 
 <pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -80,11 +110,25 @@ $screen-lg:     1200px !default; // Large screen / wide desktop
     <p>Author: <span data-bind="text: author"></span></p>
     <p>Year: <span data-bind="text: year"></span></p>
 </script>
-
+<script type="text/html" id="seasonTemplate">
+    <li>
+        <strong data-bind="text: name"></strong>
+        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
+    </li>
+</script>
+ 
+<script type="text/html" id="monthTemplate">
+    <li>
+        <span data-bind="text: month"></span>
+        is in
+        <span data-bind="text: season.name"></span>
+    </li>
+</script>
 <script type='text/javascript'>
+
 /*
-1. foreach
-2. if, ifnot
+1. template
+2. as: 當使用nested foreach時使用
 */
 
 var vm = {
@@ -95,7 +139,13 @@ var vm = {
         { title: 'Oliver Twist', author: 'CharlesDickens', year: 1837 },
         { title: 'Winnie-the-Pooh', author: 'A. A.Milne', year: 1926 },
         { title: 'The Hobbit', author: 'J. R. R.Tolkien', year: 1937 }
-    ]
+    ],
+    seasons: ko.observableArray([
+        { name: 'Spring', months: [ 'March', 'April', 'May' ] },
+        { name: 'Summer', months: [ 'June', 'July', 'August' ] },
+        { name: 'Autumn', months: [ 'September', 'October', 'November' ] },
+        { name: 'Winter', months: [ 'December', 'January', 'February' ] }
+    ])
 
 }
 

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8" />
+ <title>Hello world on Knockout.js</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+ </head>
+<body>
+
+<div class="checkbox" style="margin-top:16px;margin-bottom:0px;">
+    <label>
+        <input type="checkbox" data-bind="checked: displayDetail"> 顯示內容
+    </label>
+</div>
+
+<div data-bind="fadeVisible: displayDetail(), fadeDuration: 250">
+    <div class="panel panel-default" style="margin: 10px;">
+    <div class="panel-heading">使用template本身的foreach和as的使用</div>
+    <div class="panel-body">
+        <ul data-bind="template: { name: 'seasonTemplate', foreach: seasons, as: 'season' }"></ul>
+    </div>
+    </div>
+</div>
+
+<!--<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>-->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script type="text/html" id="book-template">
+    <h3 data-bind="text: title"></h3>
+    <p>Author: <span data-bind="text: author"></span></p>
+    <p>Year: <span data-bind="text: year"></span></p>
+</script>
+<script type="text/html" id="seasonTemplate">
+    <li>
+        <strong data-bind="text: name"></strong>
+        <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
+    </li>
+</script>
+ 
+<script type="text/html" id="monthTemplate">
+    <li>
+        <span data-bind="text: month"></span>
+        is in
+        <span data-bind="text: season.name"></span>
+    </li>
+</script>
+<script type='text/javascript'>
+
+/*
+1. 建立custom binding
+*/
+
+//init: 第一次做binding時會執行
+//update: valueAccessor有改變時就會執行
+ko.bindingHandlers.fadeVisible = {
+    init: function(element, valueAccessor) {
+        //start visible/invisible according to initial value
+        var shouldDisplay = valueAccessor();
+        $(element).toggle(shouldDisplay);
+    },
+    update: function(element, valueAccessor, allBindingAccessor) {
+        //on update, fade in/out
+        var shouldDisplay = valueAccessor(),
+        allBindings = allBindingAccessor(),
+        duration = allBindings.fadeDuration || 500;
+        shouldDisplay? $(element).fadeIn(duration) : $(element).fadeOut(duration);
+    }
+}
+
+var vm = {
+    displayDetail: ko.observable(false),
+    checkToScroll: ko.observable(false),
+    book1 : { title: 'Oliver Twist', author: 'CharlesDickens', year: 1837 },
+    book2: { title: 'Winnie-the-Pooh', author: 'A. A.Milne', year: 1926 },
+    book3: { title: 'The Hobbit', author: 'J. R. R.Tolkien', year: 1937 },
+    books: [
+        { title: 'Oliver Twist', author: 'CharlesDickens', year: 1837 },
+        { title: 'Winnie-the-Pooh', author: 'A. A.Milne', year: 1926 },
+        { title: 'The Hobbit', author: 'J. R. R.Tolkien', year: 1937 }
+    ],
+    seasons: ko.observableArray([
+        { name: 'Spring', months: [ 'March', 'April', 'May' ] },
+        { name: 'Summer', months: [ 'June', 'July', 'August' ] },
+        { name: 'Autumn', months: [ 'September', 'October', 'November' ] },
+        { name: 'Winter', months: [ 'December', 'January', 'February' ] }
+    ])
+
+}
+
+ko.applyBindings(vm);
+
+</script>
+</body>
+</html>
