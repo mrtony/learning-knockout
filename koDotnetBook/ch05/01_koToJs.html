@@ -18,6 +18,12 @@ var libraryViewModel = {
 libraryViewModel.HasBooks = ko.computed(function() {
   return this.AmountOfBooks() > 0
 }, libraryViewModel)
+/*
+toJS: 將knockoutjs的值轉換為一般的javascript object
+toJSON: 將knockoutjs的值轉換為json string
+*/
+
+
 var jsonObject = ko.toJS(libraryViewModel);
 console.log(jsonObject);
 /*
